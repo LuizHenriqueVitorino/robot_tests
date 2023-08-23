@@ -27,7 +27,7 @@ Realizando primeiro GET no Fake API
     Log To Console  ${return}
 
 Realizando outro GET 1
-    Create Session  alias=faker_api url=https://fakerapi.it/api/v1/
+    Create Session    alias=faker_api    url=https://fakerapi.it/api/v1/
 
     ${RESPONSE}    GET On Session    alias=faker_api    url=books?_quantity=1    expected_status=200    msg=Essa mensagem é um teste
     Log To Console    ${RESPONSE}

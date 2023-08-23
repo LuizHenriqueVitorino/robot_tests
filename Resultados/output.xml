@@ -1,147 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0 (Python 3.9.12 on linux)" generated="20230823 12:38:38.006" rpa="false" schemaversion="3">
-<suite id="s1" name="Request 01" source="/home/lasic/workspace/robot_tests/request_01.robot">
-<test id="s1-t1" name="Realizando primeiro GET no Fake API" line="7">
+<robot generator="Robot 6.0 (Python 3.9.12 on linux)" generated="20230823 15:40:11.141" rpa="false" schemaversion="3">
+<suite id="s1" name="fakerAPI" source="/home/lasic/workspace/robot_tests/fakerAPI.robot">
+<test id="s1-t1" name="Requestes das imagens do faker_api" line="5">
 <kw name="Create Session" library="RequestsLibrary">
-<arg>alias=faker_api</arg>
+<arg>alias=fakerapi</arg>
 <arg>url=https://fakerapi.it/api/v1/</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230823 12:38:38.093" level="INFO">Creating Session using : alias=faker_api, url=https://fakerapi.it/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230823 12:38:38.093" endtime="20230823 12:38:38.093"/>
+<msg timestamp="20230823 15:40:11.235" level="INFO">Creating Session using : alias=fakerapi, url=https://fakerapi.it/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230823 15:40:11.235" endtime="20230823 15:40:11.235"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${RESPONSE}</var>
-<arg>alias=faker_api</arg>
-<arg>url=addresses?_quantity=1</arg>
+<arg>alias=fakerapi</arg>
+<arg>url=images?_quantity=1&amp;_type=kittens&amp;_height=300</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230823 12:38:39.178" level="INFO">GET Request : url=https://fakerapi.it/api/v1/addresses?_quantity=1 
- path_url=/api/v1/addresses?_quantity=1 
+<msg timestamp="20230823 15:40:12.043" level="INFO">GET Request : url=https://fakerapi.it/api/v1/images?_quantity=1&amp;_type=kittens&amp;_height=300 
+ path_url=/api/v1/images?_quantity=1&amp;_type=kittens&amp;_height=300 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20230823 12:38:39.178" level="INFO">GET Response : url=https://fakerapi.it/api/v1/addresses?_quantity=1 
+<msg timestamp="20230823 15:40:12.043" level="INFO">GET Response : url=https://fakerapi.it/api/v1/images?_quantity=1&amp;_type=kittens&amp;_height=300 
  status=200, reason=OK 
- headers={'Server': 'nginx', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Powered-By': 'PHP/7.3.16', 'Cache-Control': 'no-cache, private', 'Date': 'Wed, 23 Aug 2023 15:38:39 GMT', 'X-RateLimit-Limit': '30', 'X-RateLimit-Remaining': '29', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With', 'X-UA-Compatible': 'IE=Edge,chrome=1', 'Content-Encoding': 'gzip'} 
- body={"status":"OK","code":200,"total":1,"data":[{"id":1,"street":"7711 Brooklyn Pike","streetName":"Dickinson Branch","buildingNumber":"3361","city":"Cristianberg","zipcode":"92918","country":"United Kingdom","county_code":"FO","latitude":29.806482,"longitude":93.81876}]} 
+ headers={'Server': 'nginx', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Powered-By': 'PHP/7.3.16', 'Cache-Control': 'no-cache, private', 'Date': 'Wed, 23 Aug 2023 18:40:11 GMT', 'X-RateLimit-Limit': '30', 'X-RateLimit-Remaining': '29', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With', 'X-UA-Compatible': 'IE=Edge,chrome=1', 'Content-Encoding': 'gzip'} 
+ body={"status":"OK","code":200,"total":1,"data":[{"title":"Autem repudiandae ut beatae.","description":"Id deserunt aperiam aperiam et. Dolores totam ab minima illum. Dolor dolor eius ratione amet et laudantium. Cum sint odio possimus sit. Voluptatem minima eligendi et ad deleniti.","url":"https:\/\/placekitten.com\/400\/300"}]} 
  </msg>
-<msg timestamp="20230823 12:38:39.178" level="INFO">/home/lasic/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakerapi.it'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20230823 15:40:12.044" level="INFO">/home/lasic/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakerapi.it'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20230823 12:38:39.179" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230823 12:38:38.093" endtime="20230823 12:38:39.179"/>
+<msg timestamp="20230823 15:40:12.044" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230823 15:40:11.236" endtime="20230823 15:40:12.044"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${RESPONSE}</arg>
+<arg>${RESPONSE.json()}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230823 12:38:39.179" endtime="20230823 12:38:39.180"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${RESPONSE.text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230823 12:38:39.180" endtime="20230823 12:38:39.182"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${RESPONSE}</var>
-<arg>alias=faker_api</arg>
-<arg>url=books?_quantity=1</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230823 12:38:39.545" level="INFO">GET Request : url=https://fakerapi.it/api/v1/books?_quantity=1 
- path_url=/api/v1/books?_quantity=1 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20230823 12:38:39.545" level="INFO">GET Response : url=https://fakerapi.it/api/v1/books?_quantity=1 
- status=200, reason=OK 
- headers={'Server': 'nginx', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Powered-By': 'PHP/7.3.16', 'Cache-Control': 'no-cache, private', 'Date': 'Wed, 23 Aug 2023 15:38:39 GMT', 'X-RateLimit-Limit': '30', 'X-RateLimit-Remaining': '29', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With', 'X-UA-Compatible': 'IE=Edge,chrome=1', 'Content-Encoding': 'gzip'} 
- body={"status":"OK","code":200,"total":1,"data":[{"id":1,"title":"I ever was at in.","author":"Ollie Nienow","genre":"Totam","description":"CHAPTER V. Advice from a Caterpillar The Caterpillar was the BEST butter, you know.' 'Not the same as the whole cause, and condemn you to set about it; if I'm not particular as to prevent its.","isbn":"9792139102274","image":"http:\/\/placeimg.com\/480\/640\/any","published":"2006-07-11","publisher":"Soluta Qui"}]} 
- </msg>
-<msg timestamp="20230823 12:38:39.545" level="INFO">/home/lasic/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakerapi.it'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20230823 12:38:39.546" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230823 12:38:39.182" endtime="20230823 12:38:39.546"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${RESPONSE}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230823 12:38:39.546" endtime="20230823 12:38:39.547"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${RESPONSE.text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230823 12:38:39.547" endtime="20230823 12:38:39.548"/>
-</kw>
-<kw name="Session Exists" library="RequestsLibrary">
-<var>${return}</var>
-<arg>alias=faker_api</arg>
-<doc>Return True if the session has been already created</doc>
-<msg timestamp="20230823 12:38:39.549" level="INFO">${return} = True</msg>
-<status status="PASS" starttime="20230823 12:38:39.548" endtime="20230823 12:38:39.549"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${return}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230823 12:38:39.549" endtime="20230823 12:38:39.549"/>
+<status status="PASS" starttime="20230823 15:40:12.044" endtime="20230823 15:40:12.046"/>
 </kw>
 <kw name="Delete All Sessions" library="RequestsLibrary">
 <doc>Removes all the session objects</doc>
-<msg timestamp="20230823 12:38:39.550" level="INFO">Deleting All Sessions</msg>
-<status status="PASS" starttime="20230823 12:38:39.550" endtime="20230823 12:38:39.550"/>
+<msg timestamp="20230823 15:40:12.047" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230823 15:40:12.047" endtime="20230823 15:40:12.047"/>
 </kw>
-<kw name="Session Exists" library="RequestsLibrary">
-<var>${return}</var>
-<arg>alias=faker_api</arg>
-<doc>Return True if the session has been already created</doc>
-<msg timestamp="20230823 12:38:39.551" level="INFO">${return} = False</msg>
-<status status="PASS" starttime="20230823 12:38:39.550" endtime="20230823 12:38:39.551"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${return}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230823 12:38:39.551" endtime="20230823 12:38:39.551"/>
-</kw>
-<status status="PASS" starttime="20230823 12:38:38.092" endtime="20230823 12:38:39.552"/>
+<status status="PASS" starttime="20230823 15:40:11.234" endtime="20230823 15:40:12.047"/>
 </test>
-<test id="s1-t2" name="Realizando outro GET 1" line="29">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>alias=faker_api url=https://fakerapi.it/api/v1/</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230823 12:38:39.553" level="FAIL">Keyword 'RequestsLibrary.Create Session' expected 2 to 14 arguments, got 1.</msg>
-<status status="FAIL" starttime="20230823 12:38:39.553" endtime="20230823 12:38:39.553"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${RESPONSE}</var>
-<arg>alias=faker_api</arg>
-<arg>url=books?_quantity=1</arg>
-<arg>expected_status=200</arg>
-<arg>msg=Essa mensagem é um teste</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="NOT RUN" starttime="20230823 12:38:39.554" endtime="20230823 12:38:39.554"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${RESPONSE}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20230823 12:38:39.554" endtime="20230823 12:38:39.554"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${RESPONSE.text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20230823 12:38:39.554" endtime="20230823 12:38:39.554"/>
-</kw>
-<kw name="Delete All Sessions" library="RequestsLibrary">
-<doc>Removes all the session objects</doc>
-<status status="NOT RUN" starttime="20230823 12:38:39.555" endtime="20230823 12:38:39.555"/>
-</kw>
-<status status="FAIL" starttime="20230823 12:38:39.552" endtime="20230823 12:38:39.555">Keyword 'RequestsLibrary.Create Session' expected 2 to 14 arguments, got 1.</status>
-</test>
-<status status="FAIL" starttime="20230823 12:38:38.007" endtime="20230823 12:38:39.556"/>
+<status status="PASS" starttime="20230823 15:40:11.142" endtime="20230823 15:40:12.048"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="1" skip="0" id="s1" name="Request 01">Request 01</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="fakerAPI">fakerAPI</stat>
 </suite>
 </statistics>
 <errors>
