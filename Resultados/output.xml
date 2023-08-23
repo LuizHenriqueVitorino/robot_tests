@@ -1,52 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1 (Python 3.8.2 on linux)" generated="20230727 14:17:54.939" rpa="false" schemaversion="4">
-<suite id="s1" name="Amazon Pesquisa" source="/home/henrique/workspace/robot_tests/amazon_pesquisa.robot">
-<test id="s1-t1" name="Cenário 1: Pesquisar produto" line="20">
-<kw name="DADO que o usuário acesse o site">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>https://www.amazon.com.br/</arg>
-<arg>chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230727 14:17:55.574" level="INFO">Opening browser 'chrome' to base url 'https://www.amazon.com.br/'.</msg>
-<status status="PASS" starttime="20230727 14:17:55.573" endtime="20230727 14:18:04.020"/>
+<robot generator="Robot 6.1 (Python 3.8.2 on linux)" generated="20230822 21:22:14.841" rpa="false" schemaversion="4">
+<suite id="s1" name="Request 01" source="/home/henrique/workspace/robot_tests/request_01.robot">
+<test id="s1-t1" name="Realizando primeiro GET no Fake API" line="7">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>alias=faker_api</arg>
+<arg>url=https://fakerapi.it/api/v1/images?_width=380</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230822 21:22:14.966" level="INFO">Creating Session using : alias=faker_api, url=https://fakerapi.it/api/v1/images?_width=380, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230822 21:22:14.966" endtime="20230822 21:22:14.967"/>
 </kw>
-<status status="PASS" starttime="20230727 14:17:55.572" endtime="20230727 14:18:04.020"/>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${RESPONSE}</var>
+<arg>alias=faker_api</arg>
+<arg>url=https://fakerapi.it/api/v1/images?_width=380</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230822 21:22:16.820" level="INFO">GET Request : url=https://fakerapi.it/api/v1/images?_width=380 
+ path_url=/api/v1/images?_width=380 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230822 21:22:16.821" level="INFO">GET Response : url=https://fakerapi.it/api/v1/images?_width=380 
+ status=200, reason=OK 
+ headers={'Server': 'nginx', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Powered-By': 'PHP/7.3.16', 'Cache-Control': 'no-cache, private', 'Date': 'Wed, 23 Aug 2023 00:22:15 GMT', 'X-RateLimit-Limit': '30', 'X-RateLimit-Remaining': '28', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With', 'X-UA-Compatible': 'IE=Edge,chrome=1', 'Content-Encoding': 'gzip'} 
+ body={"status":"OK","code":200,"total":10,"data":[{"title":"Sunt officiis et enim error.","description":"Pariatur sit autem corporis ducimus. Sint consequatur iure molestiae ea harum sit. Nihil ipsum voluptatum dolores aliquam. Ea sapiente voluptates sit reprehenderit necessitatibus tempore.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Perferendis et qui et ut.","description":"Quod eum aliquid praesentium id dignissimos. Totam nesciunt ut cupiditate animi ducimus eum similique. Est molestiae quibusdam accusamus et incidunt laboriosam.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Nostrum id odit sint est.","description":"Est enim eum dolore repellat. Dolorem iste dolore itaque voluptas ducimus sunt dolorum. Quia rem quis officiis voluptas rerum amet.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Qui vel laboriosam et.","description":"Omnis voluptatem mollitia omnis. Corporis quis deleniti ab est. Maiores eveniet sit provident nisi iusto velit sapiente autem. Numquam consequatur consequatur aut consequuntur culpa.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Magni qui ad maiores.","description":"Ab voluptatem magni inventore omnis. Id voluptatibus voluptatibus sapiente. Nobis sapiente sint perspiciatis tempora illum temporibus minus. Omnis eos pariatur quibusdam et molestiae iure.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Iure et aperiam et.","description":"Molestiae tempora ipsa delectus qui iste. Dolore quia aliquam magnam. Ea ad corporis qui sed maiores repellat.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Sed aspernatur ut eius iusto.","description":"Id est rerum laboriosam aut necessitatibus. Est quam laborum sed et pariatur numquam et. Omnis dolorum sed nemo atque voluptatem praesentium voluptas.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Quisquam quis mollitia neque.","description":"Est quod error quis ut animi. Quia quasi ut illum molestias. Quia laudantium sed qui aliquid amet eaque. Consequatur et qui veritatis blanditiis.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Earum et ut accusantium.","description":"Error explicabo ratione et eos. Repellat expedita et quaerat aut dolore nihil. Maxime sint quisquam qui. Sint in atque voluptates aut quasi a odit.","url":"http:\/\/placeimg.com\/380\/480\/any"},{"title":"Libero cum voluptas rerum.","description":"Harum perspiciatis pariatur est. Id unde nostrum quia vel numquam sed provident. Et aut eius autem.","url":"http:\/\/placeimg.com\/380\/480\/any"}]} 
+ </msg>
+<msg timestamp="20230822 21:22:16.821" level="INFO">/home/henrique/.pyenv/versions/3.8.2/lib/python3.8/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakerapi.it'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230822 21:22:16.822" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 21:22:14.967" endtime="20230822 21:22:16.822"/>
 </kw>
-<kw name="QUANDO ele escrever o nome do produto no campo de pesquisa">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${input_pesquisa}</arg>
-<arg>bola</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230727 14:18:04.027" level="INFO">Typing text 'bola' into text field 'id:twotabsearchtextbox'.</msg>
-<status status="PASS" starttime="20230727 14:18:04.024" endtime="20230727 14:18:04.353"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${RESPONSE}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 21:22:16.823" endtime="20230822 21:22:16.825"/>
 </kw>
-<status status="PASS" starttime="20230727 14:18:04.022" endtime="20230727 14:18:04.354"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 21:22:16.825" endtime="20230822 21:22:16.829"/>
 </kw>
-<kw name="E clicar no ícone da lupa">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${botao_lupa}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230727 14:18:04.360" level="INFO">Clicking element 'id:nav-search-submit-button'.</msg>
-<status status="PASS" starttime="20230727 14:18:04.358" endtime="20230727 14:18:06.706"/>
-</kw>
-<status status="PASS" starttime="20230727 14:18:04.356" endtime="20230727 14:18:06.706"/>
-</kw>
-<kw name="ENTÃO o sistema deve apresentar os itens correspondentes à pesquisa">
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230727 14:18:11.710" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20230727 14:18:06.708" endtime="20230727 14:18:11.710"/>
-</kw>
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230727 14:18:11.711" endtime="20230727 14:18:11.816"/>
-</kw>
-<status status="PASS" starttime="20230727 14:18:06.707" endtime="20230727 14:18:11.816"/>
-</kw>
-<status status="PASS" starttime="20230727 14:17:55.570" endtime="20230727 14:18:11.816"/>
+<status status="PASS" starttime="20230822 21:22:14.965" endtime="20230822 21:22:16.830"/>
 </test>
-<status status="PASS" starttime="20230727 14:17:54.941" endtime="20230727 14:18:11.818"/>
+<status status="PASS" starttime="20230822 21:22:14.842" endtime="20230822 21:22:16.833"/>
 </suite>
 <statistics>
 <total>
@@ -55,7 +50,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Amazon Pesquisa">Amazon Pesquisa</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Request 01">Request 01</stat>
 </suite>
 </statistics>
 <errors>
