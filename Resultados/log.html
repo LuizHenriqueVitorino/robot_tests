@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 6.1 (Python 3.8.2 on linux)" name="Generator">
+<meta content="Robot Framework 6.0 (Python 3.9.12 on linux)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all" type="text/css">
 /* Generic and misc styles */
@@ -560,9 +560,6 @@ function toggleSuite(suiteId) {
 }
 function toggleTest(testId) {
     toggleElement(testId, ['keyword']);
-    var test = window.testdata.findLoaded(testId);
-    if (test.status == "FAIL" || test.status == "SKIP")
-        expandFailed(test);
 }
 function toggleKeyword(kwId) {
     toggleElement(kwId, ['keyword']);
@@ -626,7 +623,7 @@ function loadAndExpandElementIds(ids) {
     }
 }
 function expandFailed(element) {
-    if (element.status == "FAIL" || (element.type == "test" && element.status == "SKIP")) {
+    if (element.status == "FAIL") {
         window.elementsToExpand = [element];
         window.expandDecider = function (e) {
             return e.status == "FAIL";
@@ -1358,7 +1355,7 @@ window.testdata = function () {
     var LEVELS = ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FAIL', 'SKIP'];
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF', 'ELSE IF', 'ELSE', 'RETURN',
-                         'TRY', 'EXCEPT', 'FINALLY', 'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'TRY', 'EXCEPT', 'FINALLY', 'WHILE', 'CONTINUE', 'BREAK'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -1806,25 +1803,25 @@ function stopPropagation(event) {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,1991],[],[[4,0,0,[],[1,123,1865],[[0,5,6,0,7,8,0,0,[1,124,1],[[124,2,9]]],[0,10,6,0,11,8,12,0,[1,125,1855],[[1978,2,13],[1979,2,14],[1979,2,15],[1980,2,16]]],[0,17,18,0,19,12,0,0,[1,1981,2],[]],[0,17,18,0,19,20,0,0,[1,1983,4],[]]]]],[],[1,1,0,0]];
+window.output["suite"] = [1,2,3,0,[],[0,0,1549],[],[[4,0,0,[],[1,85,1460],[[0,5,6,0,7,8,0,0,[1,86,0],[[86,2,9]]],[0,10,6,0,11,12,13,0,[1,86,1086],[[1171,2,14],[1171,2,15],[1171,2,16],[1172,2,17]]],[0,18,19,0,20,13,0,0,[1,1172,1],[]],[0,18,19,0,20,21,0,0,[1,1173,2],[]],[0,10,6,0,11,22,13,0,[1,1175,364],[[1538,2,23],[1538,2,24],[1538,2,16],[1539,2,17]]],[0,18,19,0,20,13,0,0,[1,1539,1],[]],[0,18,19,0,20,21,0,0,[1,1540,1],[]],[0,25,6,0,26,27,28,0,[1,1541,1],[[1542,2,29]]],[0,18,19,0,20,28,0,0,[1,1542,0],[]],[0,30,6,0,31,0,0,0,[1,1543,0],[[1543,2,32]]],[0,25,6,0,26,27,28,0,[1,1543,1],[[1544,2,33]]],[0,18,19,0,20,28,0,0,[1,1544,0],[]]]],[34,0,0,[],[0,1545,3,35],[[0,5,6,0,7,36,0,0,[0,1546,0],[[1546,5,35]]],[0,10,6,0,11,37,13,0,[3,1547,0],[]],[0,18,19,0,20,13,0,0,[3,1547,0],[]],[0,18,19,0,20,21,0,0,[3,1547,0],[]],[0,30,6,0,31,0,0,0,[3,1548,0],[]]]]],[],[2,1,1,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Request 01","*/home/henrique/workspace/robot_tests/request_01.robot","*../request_01.robot","*Realizando primeiro GET no Fake API","*Create Session","*RequestsLibrary","*<p>Create Session: create a HTTP session to a server\x3c/p>","*alias=faker_api, url=https://fakerapi.it/api/v1/images?_width=380","*Creating Session using : alias=faker_api, url=https://fakerapi.it/api/v1/images?_width=380, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 ","*GET On Session","*<p>Sends a GET request on a previously created HTTP Session.\x3c/p>","*${RESPONSE}","*GET Request : url=https://fakerapi.it/api/v1/images?_width=380 \n path_url=/api/v1/images?_width=380 \n headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","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","*${RESPONSE} = &lt;Response [200]&gt;","*Log To Console","*BuiltIn","*<p>Logs the given message to the console.\x3c/p>","*${RESPONSE.text}"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Request 01","*/home/lasic/workspace/robot_tests/request_01.robot","*../request_01.robot","*Realizando primeiro GET no Fake API","*Create Session","*RequestsLibrary","*<p>Create Session: create a HTTP session to a server\x3c/p>","*alias=faker_api, url=https://fakerapi.it/api/v1/","*Creating Session using : alias=faker_api, url=https://fakerapi.it/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 ","*GET On Session","*<p>Sends a GET request on a previously created HTTP Session.\x3c/p>","*alias=faker_api, url=addresses?_quantity=1","*${RESPONSE}","*GET Request : url=https://fakerapi.it/api/v1/addresses?_quantity=1 \n path_url=/api/v1/addresses?_quantity=1 \n headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","eNp1U9FO2zAUfd9XWH6pNCVN0rA2jRRNBTqYCrTqypg0TciNL4nXxA62UyiIf991WjQ0jZc4vuf4+Pj4+my6IkswjZIGSEpaXWWltY1Jg+CObUCzRvSFDXAItlHAONdgDJjPt/ctk1bYXRaRD8RYZluTDcLQIxqYUTKbz7BeAuOgTfbc+wZ6C7qXkp4shHzseaR3oqQFaf3VrgEHsKapRM6sUDL4jRKOs9JMmjvQ/lTmigtZOGJetnID/KAhIXdLHLABaHxWiS047DvTO1ed5Dk09q8CQj/8hXoADdw/7iiL80Uw6sf9aNiJsrwE39nTquosKz93NY80WmyZ7eRP3YjgDXCPDGIyaQsyCPEn+pTGSRqPydnlar/ZEqkXohbW775uVRz+Cy2hZkIejjgYO9g5N+bViT+pKvXgz7XABB3p47ucS7Cl4saRzqard2knmADegGBVR7W6hf9wL9mjPym6sybDozB8V+58f9uO+PZuPYwG7Wjx1N2tR/DUcN+CsZj/jbDlPonrCcrVDXLWVbfZ12k25QV4ealVDVn0tmfetkPxJJreC3bbWvFd9kz3zUhTOp9RjyIPaOo6k1plWUXTyKOcWUbTn89U8G5urAawuGQ0iiJyrJXaVDtJFmID9BW9YjUK0VORb4TE9kQak3mJ+LoVlTNz1dZr0MiJ42HktsbngbMTLQxmLBErsIpu957oeDCOks5iizE66rUUGAqZoRhX9Su0uz0s+DLHUoUJ2bY71LifhMOjZIBFhc9qXx3H/SRKRsOXXy6TP572Oy0=","eNqtj01OAzEMRvecwiqLspmYMoDEqFRiBztEi1i7idtETZMh9hTm9mRU9Qbs/PP85A99PjJGkmCREtmcHLUYwxb7UX1OrXlCCcpNT/ZAexYcSqzrFiua2GrIqc85mn7sFrf3Dx28JWE7FP7g74FFv6ikkPYdfKYTl7AL7OB1s3lfQzkDEAS2XBE4kmPQDD7X6XxHBy7UBxN0buDFuQmxXLQ6LCnDWVfL+sIkES057eMI5E5B2BlYM3ewJPCFd88zr9pLh5cApjA59eyyFRMycsKFuXs0v1jvKVl2zSA1sfF6jNcisfk5R5HZ6t9US6TVFcClNVNx8wckG5CT","*${RESPONSE} = &lt;Response [200]&gt;","*Log To Console","*BuiltIn","*<p>Logs the given message to the console.\x3c/p>","*${RESPONSE.text}","*alias=faker_api, url=books?_quantity=1","*GET Request : url=https://fakerapi.it/api/v1/books?_quantity=1 \n path_url=/api/v1/books?_quantity=1 \n headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","eNp1VF1v00AQfOdXrPxiCdmxnZS2MYpQKFFbldLSmg+JILSxt/aR8525OyeEiv/OnltEQfTF9u3Oze7sjny8KOCKbKeVJcihN3LWONfZPElucE0GOzESLuFXssmSldZr++LLtx6VE243y+AJWIeut7NxmkZgCK1Ws4szjjeEFRk7uw2vyWzIhDmEqhbqexhBeKSVI+XiYteRT2DXSVGiE1olX5nCYwqDyt6QiReq1JVQtQeWTa/WVN1zKCr9FZ9YE3UxSrEhn3uPZuej87Kkzv1h4NTH+FJvyVAVvxwglyeXycFoMsr2B1IsG4p9e0bLoWUdlz4WQWfEBt1A/8q/OfmBqgjGE5j3NYxT/sie5ZPDfDKF4/PirtgVQ1+LVrh4ePpbk/Tf1BW1KNS9xPHUp33n1v7uJJ5LqbfxhRE8QQ96+ijmnFyjK+tBx4viUdgRT4A3IFAOUGd6+g/2HL/H83rQeri/l6aP0p3cbdsDH+424tFwO0b8GHYbAaumbz1Zx/P/IFxzN4l3c6ZrO8as5FDsdDFbVDVFZWN0S7PsoWce2qH+IbrwJ7ttpavd7Da4M2OQBxdnQRQwjoLcOzNw2qEM8iwKKnQY5J9uA1ENZzayZFRwCsQuhS1aQAdCjZgAh+Y9nZSC4I0gpbccr0kZf6dg1pbPFdnSiM5L5OjRyfyyWFzB+xHMq40oCW5YBSAc8cJNJ6REA0VDf519Xcexl4vrAla940wEO93DmkuOQgjfaDcALLYE9+BtoyVBib3lSaOqoNSqolYNF50GSw5wpXvW456DuIHTsAXFRB0aJ8reF/ZUms3N6pXHWS9c2JVXMj2YjrPJNEvH44M9H26x9rr9LyJfJsukk1iSaOtRqdtlsneYLhO2yTJBtWN416+ksA3xoAPewn6cHsRZ9iDhR3utZe8Q3vYi+PnZr/IXzPJ2aw==","*Session Exists","*<p>Return True if the session has been already created\x3c/p>","*alias=faker_api","*${return}","*${return} = True","*Delete All Sessions","*<p>Removes all the session objects\x3c/p>","*Deleting All Sessions","*${return} = False","*Realizando outro GET 1","*Keyword 'RequestsLibrary.Create Session' expected 2 to 14 arguments, got 1.","*alias=faker_api url=https://fakerapi.it/api/v1/","*alias=faker_api, url=books?_quantity=1, expected_status=200, msg=Essa mensagem é um teste"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:02","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:02","fail":0,"id":"s1","label":"Request 01","name":"Request 01","pass":1,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:01","fail":1,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:02","fail":1,"id":"s1","label":"Request 01","name":"Request 01","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1692750134842;
+window.output["baseMillis"] = 1692805118007;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 2011;
+window.output["generated"] = 1554;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -1931,8 +1928,8 @@ function makeElementVisible(id) {
         util.map(ids, expandElementWithId);
         if (ids.length) {
             expandFailed(window.testdata.findLoaded(util.last(ids)));
+            window.location.hash = '';
             window.location.hash = id;
-            document.getElementById(id).scrollIntoView();
             highlightLinkTarget();
         }
     });
