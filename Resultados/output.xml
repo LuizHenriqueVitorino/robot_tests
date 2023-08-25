@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0 (Python 3.9.12 on linux)" generated="20230823 15:40:11.141" rpa="false" schemaversion="3">
-<suite id="s1" name="fakerAPI" source="/home/lasic/workspace/robot_tests/fakerAPI.robot">
-<test id="s1-t1" name="Requestes das imagens do faker_api" line="5">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>alias=fakerapi</arg>
-<arg>url=https://fakerapi.it/api/v1/</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230823 15:40:11.235" level="INFO">Creating Session using : alias=fakerapi, url=https://fakerapi.it/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230823 15:40:11.235" endtime="20230823 15:40:11.235"/>
+<robot generator="Robot 6.0 (Python 3.9.12 on linux)" generated="20230825 11:28:00.756" rpa="false" schemaversion="3">
+<suite id="s1" name="serveRestTest" source="/home/lasic/workspace/robot_tests/serveRestTest.robot">
+<test id="s1-t1" name="Get Product Information" line="15">
+<kw name="Given the API endpoint is available">
+<doc>Ensure that the API endpoint is up and running</doc>
+<kw name="No Operation" library="BuiltIn">
+<doc>Does absolutely nothing.</doc>
+<status status="PASS" starttime="20230825 11:28:00.840" endtime="20230825 11:28:00.841"/>
 </kw>
+<status status="PASS" starttime="20230825 11:28:00.840" endtime="20230825 11:28:00.841"/>
+</kw>
+<kw name="When a user requests product information with ID ${_id}" sourcename="When a user requests product information with ID ${_id}">
+<doc>Request product information with the given ID</doc>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${RESPONSE}</var>
-<arg>alias=fakerapi</arg>
-<arg>url=images?_quantity=1&amp;_type=kittens&amp;_height=300</arg>
+<arg>alias="Serverest"</arg>
+<arg>url=${BASE_URL}/Produtos/${_id}</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230823 15:40:12.043" level="INFO">GET Request : url=https://fakerapi.it/api/v1/images?_quantity=1&amp;_type=kittens&amp;_height=300 
- path_url=/api/v1/images?_quantity=1&amp;_type=kittens&amp;_height=300 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20230823 15:40:12.043" level="INFO">GET Response : url=https://fakerapi.it/api/v1/images?_quantity=1&amp;_type=kittens&amp;_height=300 
- status=200, reason=OK 
- headers={'Server': 'nginx', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Powered-By': 'PHP/7.3.16', 'Cache-Control': 'no-cache, private', 'Date': 'Wed, 23 Aug 2023 18:40:11 GMT', 'X-RateLimit-Limit': '30', 'X-RateLimit-Remaining': '29', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With', 'X-UA-Compatible': 'IE=Edge,chrome=1', 'Content-Encoding': 'gzip'} 
- body={"status":"OK","code":200,"total":1,"data":[{"title":"Autem repudiandae ut beatae.","description":"Id deserunt aperiam aperiam et. Dolores totam ab minima illum. Dolor dolor eius ratione amet et laudantium. Cum sint odio possimus sit. Voluptatem minima eligendi et ad deleniti.","url":"https:\/\/placekitten.com\/400\/300"}]} 
- </msg>
-<msg timestamp="20230823 15:40:12.044" level="INFO">/home/lasic/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakerapi.it'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20230823 15:40:12.044" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230823 15:40:11.236" endtime="20230823 15:40:12.044"/>
+<msg timestamp="20230825 11:28:00.842" level="FAIL">Non-existing index or alias '"Serverest"'.</msg>
+<status status="FAIL" starttime="20230825 11:28:00.841" endtime="20230825 11:28:00.842"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${RESPONSE.json()}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230823 15:40:12.044" endtime="20230823 15:40:12.046"/>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230825 11:28:00.842" endtime="20230825 11:28:00.842"/>
 </kw>
-<kw name="Delete All Sessions" library="RequestsLibrary">
-<doc>Removes all the session objects</doc>
-<msg timestamp="20230823 15:40:12.047" level="INFO">Deleting All Sessions</msg>
-<status status="PASS" starttime="20230823 15:40:12.047" endtime="20230823 15:40:12.047"/>
+<status status="FAIL" starttime="20230825 11:28:00.841" endtime="20230825 11:28:00.843"/>
 </kw>
-<status status="PASS" starttime="20230823 15:40:11.234" endtime="20230823 15:40:12.047"/>
+<kw name="Then the response status code should be 200">
+<doc>Verify that the response status code is 200</doc>
+<status status="NOT RUN" starttime="20230825 11:28:00.843" endtime="20230825 11:28:00.843"/>
+</kw>
+<kw name="And the response should contain product name &quot;Product 1&quot;">
+<doc>Verify that the response contains the expected product name</doc>
+<status status="NOT RUN" starttime="20230825 11:28:00.843" endtime="20230825 11:28:00.843"/>
+</kw>
+<tag>BDD</tag>
+<status status="FAIL" starttime="20230825 11:28:00.840" endtime="20230825 11:28:00.843">Non-existing index or alias '"Serverest"'.</status>
 </test>
-<status status="PASS" starttime="20230823 15:40:11.142" endtime="20230823 15:40:12.048"/>
+<status status="FAIL" starttime="20230825 11:28:00.757" endtime="20230825 11:28:00.844"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="0" fail="1" skip="0">BDD</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="fakerAPI">fakerAPI</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="serveRestTest">serveRestTest</stat>
 </suite>
 </statistics>
 <errors>
