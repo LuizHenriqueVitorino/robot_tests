@@ -1803,31 +1803,31 @@ function stopPropagation(event) {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[0,0,87],[],[[4,0,0,[5],[0,83,3,6],[[0,7,0,0,8,0,0,0,[1,83,1],[[0,9,10,0,11,0,0,0,[1,83,1],[]]]],[0,12,0,0,13,0,0,0,[0,84,2],[[0,14,15,0,16,17,18,0,[0,84,1],[[85,5,6]]],[0,19,10,0,20,18,0,0,[3,85,0],[]]]],[0,21,0,0,22,0,0,0,[3,86,0],[]],[0,23,0,0,24,0,0,0,[3,86,0],[]]]]],[],[1,0,1,0]];
+window.output["suite"] = [1,2,3,0,[],[0,0,522],[],[[4,0,0,[],[0,86,435,5],[[0,6,0,0,7,0,0,0,[1,86,1],[[0,8,9,0,10,11,0,0,[1,86,1],[[87,2,12]]]]],[0,13,0,0,14,0,0,0,[1,87,431],[[0,15,9,0,16,17,18,0,[1,88,430],[[517,2,19],[517,2,20],[518,2,21],[518,2,22]]]]],[0,23,0,0,24,0,0,0,[0,518,3],[[0,25,26,0,27,28,29,0,[1,519,0],[[519,2,30]]],[0,31,26,0,32,33,0,0,[0,520,0],[[520,5,5]]],[0,34,9,0,35,0,0,0,[3,521,0],[]]]]]]],[],[1,0,1,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*serveRestTest","*/home/lasic/workspace/robot_tests/serveRestTest.robot","*../serveRestTest.robot","*Get Product Information","*BDD","*Non-existing index or alias '\"Serverest\"'.","*Given the API endpoint is available","*<p>Ensure that the API endpoint is up and running\x3c/p>","*No Operation","*BuiltIn","*<p>Does absolutely nothing.\x3c/p>","*When a user requests product information with ID ${_id}","*<p>Request product information with the given ID\x3c/p>","*GET On Session","*RequestsLibrary","*<p>Sends a GET request on a previously created HTTP Session.\x3c/p>","*alias=\"Serverest\", url=${BASE_URL}/Produtos/${_id}","*${RESPONSE}","*Set Test Variable","*<p>Makes a variable available everywhere within the scope of the current test.\x3c/p>","*Then the response status code should be 200","*<p>Verify that the response status code is 200\x3c/p>","*And the response should contain product name &quot;Product 1&quot;","*<p>Verify that the response contains the expected product name\x3c/p>"]);
+window.output["strings"] = window.output["strings"].concat(["*","*produtosServeRest","*/home/lasic/workspace/robot_tests/produtosServeRest.robot","*../produtosServeRest.robot","*Cenário 1: Pesquisar produto por id","*RESPONSE != 200","*DADO que o endpoint da API está disponivel","*<p>Verifique se a API está disponível\x3c/p>","*Create Session","*RequestsLibrary","*<p>Create Session: create a HTTP session to a server\x3c/p>","*alias=serveRest, url=${BASE_URL}","eNptjDEOwjAQBL9yD7AIdSRXSJQU8IKDLPEJY0e+cxSE+DsJocx2s7uaQwGbpJ4uUJWcqOpCLXEUVq8oI85Qc1RL9MFs0LZpfnWZ612H0VEAdyjq3x9HW7nl/BCsO1cL/pQTHJk8kav9aSh5Wk4rzXq5v/yRo2Jb2uFae7+nL8ZePLU=","*QUANDO o usuário realiza a requisição do produto ${_id}","*<p>Realiza uma requisição informando o id do produto no path do endpoint\x3c/p>","*GET On Session","*<p>Sends a GET request on a previously created HTTP Session.\x3c/p>","*alias=serveRest, url=/produtos/${_id}","*${RESPONSE}","*GET Request : url=https://serverest.dev/produtos/K6leHdftCeOJj8BJ \n path_url=/produtos/K6leHdftCeOJj8BJ \n headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","eNpdks1u2zAQhO9+CsIXA4VZS7Ik/0GH1EndJE0DxEbRW7EiVzJTiauSVOIg6LuXtGMgLY873+4Oydlc7dgD2o60RbZkvWmKvXOdXU4mFs0TGrTuo8SnSWdI9o7s5DZv8Ius3Brvbx7nn27YgFkHrrdFEkVjZhAs6eL+1tf3CBKNLV5HIARaywVpZ6jh0DT0zMmoWunRko0+jMZsdOBSW94ZrNCJ/ZkNMlXVCagMtMipc8r7Dcr24u7q/uF6c/0tANYZJRx3BrS/kXHcouiNci8BbeHAocYizrLMO41WTGnR9BK3fXlJLSg/8eSCnnVDIN/v0UQd6pMejKH2a146/JexWp2dHmy4CjkUQQ9yvGItSSzKhsSvE9QSWlWd/MIR5EoGVsSYxzM542m5KHkaSeDlPI24mM7L2SyLsxKTMOK9ldAHXdcoAWHS5NF/w4qJPRiLruhdxeeh5QdfN9RLvjMgkK/DgIMLvSmIuCoXWVSmaZ5XeQUoZCVkLuIkqkS0oiIOAy7BHXfdkR6zZM4u+polUTJlcbJM8+U0YZu7XQC3x/wEdENUN8g+m6NdGcT1m/OvqGu3P77PNB/98aEpSb4UrwPmz1BTi8MlG26htb2uWR6xjhqsQYIdjk+MD4wgD2VJGr2VJFrhkwChPNx9P5O/e9BOSZ9JX08Xi9nsTfipZCD/T/ZwEPz8BT/a+cU=","eNqtj0FPwzAMhe/8CmscxqUxozCJakziBjfEhjh7iddEpEmJ00L/Pamq/QNuz/b3nvzQxo7RkziNFEjHYKhG707YT9nGUKtHFJe56kl/UcuCQ/LlXGNBA+vsYuhj9Kqfms3t/UMDr0FYD4nf+XtgyZ+UggttAx9h5OTOjg28HI9vB0gLAE7gxAWBjgxDjmBj2a6FUzEUQBke1wqejZkhzSmXFE2ZYQkssjwxx0hOMbR+AjKjEzYKDswN7Ahs4vPTyubcS4OXCioxmWzZRC3KReSAG3W3Vb9Y/BQ0m2qQ0lnZ3PlrEV/9LGVktf+3qB3S/grgMqpZ3PwBkAyRlQ==","*${RESPONSE} = &lt;Response [200]&gt;","*Então o status de resposta deve ser 200","*<p>Verifica se o status de resposta é 200\x3c/p>","*Set Variable","*BuiltIn","*<p>Returns the given values which can then be assigned to a variables.\x3c/p>","*RESPONSE","*${status_code}","*${status_code} = RESPONSE","*Should Be Equal As Strings","*<p>Fails if objects are unequal after converting them to strings.\x3c/p>","*${status_code}, 200","*Delete All Sessions","*<p>Removes all the session objects\x3c/p>"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","pass":0,"skip":0}],[{"elapsed":"00:00:00","fail":1,"label":"BDD","pass":0,"skip":0}],[{"elapsed":"00:00:00","fail":1,"id":"s1","label":"serveRestTest","name":"serveRestTest","pass":0,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:01","fail":1,"id":"s1","label":"produtosServeRest","name":"produtosServeRest","pass":0,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1692973680757;
+window.output["baseMillis"] = 1693226792319;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 90;
+window.output["generated"] = 528;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
 </script>
 <script type="text/javascript">
-window.settings = {"defaultLevel":"INFO","minLevel":"FAIL","reportURL":"report.html","rpa":false,"splitLogBase":"log","title":""};
+window.settings = {"defaultLevel":"INFO","minLevel":"INFO","reportURL":"report.html","rpa":false,"splitLogBase":"log","title":""};
 </script>
 <title></title>
 </head>

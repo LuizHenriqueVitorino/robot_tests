@@ -1,8 +1,3 @@
-
-Claro, vou reformular o teste anterior para seguir o padrão BDD (Behavior-Driven Development) utilizando o Robot Framework.
-
-robot
-Copy code
 *** Settings ***
 Library    RequestsLibrary
 
