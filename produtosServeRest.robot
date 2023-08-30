@@ -36,12 +36,12 @@ QUANDO o usuário receber o Obter Token
 E realizar a requisição do produto ${_id}
     [Documentation]    Realiza uma requisição informando o id do produto no path do endpoint
     ${RESPONSE}    GET On Session    alias=serveRest    url=/produtos/${_id}
-Então o status de resposta deve ser 200
+Então o sistema deve retornar um json com o produto relacionado ao id pesquisado
     [Documentation]    Verifica se o status de resposta é 200
     ${HEADERS}   Create Dictionary  Authorization=${TOKEN}
     ${RESPONSE}  GET On Session     alias=serveRest    url=produtos/${_id}    headers=${HEADERS}
     Log   Resposta Retornada: ${\n}${RESPONSE.text}
-    Should Be Equal As Strings    200    200
+    Dictionary Should Contain Item    ${RESPONSE.json()}    nome    Samsung 60 polegadas
 
     Delete All Sessions
 
@@ -52,4 +52,4 @@ Cenário 1: Pesquisar produto por id
     E realize o cadastro no sistema
     QUANDO o usuário receber o Obter Token
     E realizar a requisição do produto ${_id}
-    Então o status de resposta deve ser 200
+    Então o sistema deve retornar um json com o produto relacionado ao id pesquisado
