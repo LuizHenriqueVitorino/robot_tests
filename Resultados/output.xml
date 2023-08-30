@@ -1,360 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0 (Python 3.9.12 on linux)" generated="20230830 09:17:11.875" rpa="false" schemaversion="3">
-<suite id="s1" name="exemplo API ServeRest" source="/home/lasic/workspace/robot_tests/exemplo_API_ServeRest.robot">
-<test id="s1-t1" name="Testar a API pública de estudos serverest" line="13">
-<kw name="Iniciar sessão na API serverest">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on linux)" generated="20230830 15:31:59.866" rpa="false" schemaversion="4">
+<suite id="s1" name="produtosServeRest" source="/home/informatica/workspace/robot_tests/produtosServeRest.robot">
+<test id="s1-t1" name="Cenário 1: Pesquisar produto por id" line="50">
+<kw name="DADO que o usuário inicie a sessão na API do serverest">
+<doc>Inicia a cessão na API do serverest</doc>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${HEADERS}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230830 09:17:12.354" level="INFO">${HEADERS} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230830 09:17:12.353" endtime="20230830 09:17:12.354"/>
+<msg timestamp="20230830 15:32:00.102" level="INFO">${HEADERS} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230830 15:32:00.102" endtime="20230830 15:32:00.102"/>
 </kw>
 <kw name="Create Session" library="RequestsLibrary">
-<arg>alias=${ALIAS}</arg>
-<arg>url=https://serverest.dev</arg>
+<arg>alias=serveRest</arg>
+<arg>url=${BASE_URL}</arg>
 <arg>headers=${HEADERS}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230830 09:17:12.354" level="INFO">Creating Session using : alias=API_serverest, url=https://serverest.dev, headers={'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230830 09:17:12.354" endtime="20230830 09:17:12.355"/>
+<msg timestamp="20230830 15:32:00.103" level="INFO">Creating Session using : alias=serveRest, url=https://serverest.dev, headers={'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230830 15:32:00.102" endtime="20230830 15:32:00.103"/>
 </kw>
-<status status="PASS" starttime="20230830 09:17:12.353" endtime="20230830 09:17:12.355"/>
+<status status="PASS" starttime="20230830 15:32:00.101" endtime="20230830 15:32:00.103"/>
 </kw>
-<kw name="Cadastrar usuário de teste">
-<kw name="Cria dados aleatórios do usuário">
+<kw name="E realize o cadastro no sistema">
+<kw name="Criar dados do usuário">
+<doc>Cria um dicionário com os dados do usuário</doc>
 <kw name="First Name" library="FakerLibrary">
-<var>${RANDOM_NOME_FIRST}</var>
-<msg timestamp="20230830 09:17:12.356" level="INFO">${RANDOM_NOME_FIRST} = Emilly</msg>
-<status status="PASS" starttime="20230830 09:17:12.355" endtime="20230830 09:17:12.356"/>
+<var>${FIRT_NAME}</var>
+<msg timestamp="20230830 15:32:00.104" level="INFO">${FIRT_NAME} = Sophia</msg>
+<status status="PASS" starttime="20230830 15:32:00.104" endtime="20230830 15:32:00.104"/>
 </kw>
 <kw name="Last Name" library="FakerLibrary">
-<var>${RANDOM_NOME_LAST}</var>
-<msg timestamp="20230830 09:17:12.356" level="INFO">${RANDOM_NOME_LAST} = Cardoso</msg>
-<status status="PASS" starttime="20230830 09:17:12.356" endtime="20230830 09:17:12.356"/>
+<var>${LAST_NAME}</var>
+<msg timestamp="20230830 15:32:00.104" level="INFO">${LAST_NAME} = Alves</msg>
+<status status="PASS" starttime="20230830 15:32:00.104" endtime="20230830 15:32:00.104"/>
 </kw>
 <kw name="Email" library="FakerLibrary">
-<var>${RANDOM_EMAIL}</var>
-<msg timestamp="20230830 09:17:12.356" level="INFO">${RANDOM_EMAIL} = ninada-cruz@example.net</msg>
-<status status="PASS" starttime="20230830 09:17:12.356" endtime="20230830 09:17:12.356"/>
+<var>${EMAIL}</var>
+<msg timestamp="20230830 15:32:00.104" level="INFO">${EMAIL} = larasilva@example.net</msg>
+<status status="PASS" starttime="20230830 15:32:00.104" endtime="20230830 15:32:00.104"/>
 </kw>
 <kw name="Password" library="FakerLibrary">
-<var>${RANDOM_PWD}</var>
+<var>${PASSWORD}</var>
 <doc>Generate a random password of the specified ``length``.</doc>
-<msg timestamp="20230830 09:17:12.357" level="INFO">${RANDOM_PWD} = 2R3WYgfni@</msg>
-<status status="PASS" starttime="20230830 09:17:12.356" endtime="20230830 09:17:12.357"/>
+<msg timestamp="20230830 15:32:00.105" level="INFO">${PASSWORD} = Fl^6^PeilA</msg>
+<status status="PASS" starttime="20230830 15:32:00.105" endtime="20230830 15:32:00.105"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${USUARIO}</var>
-<arg>nome=${RANDOM_NOME_FIRST} ${RANDOM_NOME_LAST}</arg>
-<arg>email=${RANDOM_EMAIL}</arg>
-<arg>senha=${RANDOM_PWD}</arg>
+<arg>nome=${FIRT_NAME} ${LAST_NAME}</arg>
+<arg>email=${EMAIL}</arg>
+<arg>senha=${PASSWORD}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230830 09:17:12.357" level="INFO">${USUARIO} = {'nome': 'Emilly Cardoso', 'email': 'ninada-cruz@example.net', 'senha': '2R3WYgfni@'}</msg>
-<status status="PASS" starttime="20230830 09:17:12.357" endtime="20230830 09:17:12.357"/>
+<msg timestamp="20230830 15:32:00.105" level="INFO">${USUARIO} = {'nome': 'Sophia Alves', 'email': 'larasilva@example.net', 'senha': 'Fl^6^PeilA'}</msg>
+<status status="PASS" starttime="20230830 15:32:00.105" endtime="20230830 15:32:00.105"/>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <arg>${USUARIO}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20230830 09:17:12.358" level="INFO">${USUARIO} = {'nome': 'Emilly Cardoso', 'email': 'ninada-cruz@example.net', 'senha': '2R3WYgfni@'}</msg>
-<status status="PASS" starttime="20230830 09:17:12.358" endtime="20230830 09:17:12.358"/>
+<msg timestamp="20230830 15:32:00.106" level="INFO">${USUARIO} = {'nome': 'Sophia Alves', 'email': 'larasilva@example.net', 'senha': 'Fl^6^PeilA'}</msg>
+<status status="PASS" starttime="20230830 15:32:00.105" endtime="20230830 15:32:00.106"/>
 </kw>
-<status status="PASS" starttime="20230830 09:17:12.355" endtime="20230830 09:17:12.358"/>
+<status status="PASS" starttime="20230830 15:32:00.103" endtime="20230830 15:32:00.106"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
-<var>${BODY}</var>
+<var>${Body}</var>
 <arg>nome=${USUARIO.nome}</arg>
 <arg>email=${USUARIO.email}</arg>
 <arg>password=${USUARIO.senha}</arg>
 <arg>administrador=true</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230830 09:17:12.360" level="INFO">${BODY} = {'nome': 'Emilly Cardoso', 'email': 'ninada-cruz@example.net', 'password': '2R3WYgfni@', 'administrador': 'true'}</msg>
-<status status="PASS" starttime="20230830 09:17:12.358" endtime="20230830 09:17:12.360"/>
+<msg timestamp="20230830 15:32:00.107" level="INFO">${Body} = {'nome': 'Sophia Alves', 'email': 'larasilva@example.net', 'password': 'Fl^6^PeilA', 'administrador': 'true'}</msg>
+<status status="PASS" starttime="20230830 15:32:00.106" endtime="20230830 15:32:00.107"/>
 </kw>
 <kw name="POST On Session" library="RequestsLibrary">
 <var>${RESPONSE}</var>
-<arg>alias=${ALIAS}</arg>
+<arg>alias=serveRest</arg>
 <arg>url=usuarios</arg>
 <arg>json=${BODY}</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20230830 09:17:12.783" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+<msg timestamp="20230830 15:32:00.542" level="INFO">POST Request : url=https://serverest.dev/usuarios 
  path_url=/usuarios 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '113'} 
- body=b'{"nome": "Emilly Cardoso", "email": "ninada-cruz@example.net", "password": "2R3WYgfni@", "administrador": "true"}' 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '109'} 
+ body=b'{"nome": "Sophia Alves", "email": "larasilva@example.net", "password": "Fl^6^PeilA", "administrador": "true"}' 
  </msg>
-<msg timestamp="20230830 09:17:12.783" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+<msg timestamp="20230830 15:32:00.542" level="INFO">POST Response : url=https://serverest.dev/usuarios 
  status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'bdf884ef-fe08-408a-9ec3-58066c8f6f8f', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '642909789b063d8775f4ccac2c5d9f21;o=1', 'Date': 'Wed, 30 Aug 2023 12:17:12 GMT', 'Server': 'Google Frontend', 'Content-Length': '82'} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '7f18683a-7ff7-49d2-a66d-9e28ebc104ad', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '0836b6da8518274da5d1e558657046a5;o=1', 'Date': 'Wed, 30 Aug 2023 18:32:00 GMT', 'Server': 'Google Frontend', 'Content-Length': '82'} 
  body={
     "message": "Cadastro realizado com sucesso",
-    "_id": "RIqYilMawYF7tsWG"
+    "_id": "VOi2Dn25yufKqa29"
 } 
  </msg>
-<msg timestamp="20230830 09:17:12.783" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20230830 09:17:12.360" endtime="20230830 09:17:12.783"/>
+<msg timestamp="20230830 15:32:00.542" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230830 15:32:00.107" endtime="20230830 15:32:00.542"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>Resposta Retornada: ${\n}${RESPONSE.text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230830 09:17:12.785" level="INFO">Resposta Retornada: 
+<msg timestamp="20230830 15:32:00.543" level="INFO">Resposta Retornada: 
 {
     "message": "Cadastro realizado com sucesso",
-    "_id": "RIqYilMawYF7tsWG"
+    "_id": "VOi2Dn25yufKqa29"
 }</msg>
-<status status="PASS" starttime="20230830 09:17:12.784" endtime="20230830 09:17:12.785"/>
+<status status="PASS" starttime="20230830 15:32:00.542" endtime="20230830 15:32:00.543"/>
 </kw>
-<status status="PASS" starttime="20230830 09:17:12.355" endtime="20230830 09:17:12.785"/>
+<status status="PASS" starttime="20230830 15:32:00.103" endtime="20230830 15:32:00.543"/>
 </kw>
-<kw name="Obter Token">
+<kw name="QUANDO o usuário receber o Obter Token">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${BODY}</var>
 <arg>email=${USUARIO.email}</arg>
 <arg>password=${USUARIO.senha}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230830 09:17:12.788" level="INFO">${BODY} = {'email': 'ninada-cruz@example.net', 'password': '2R3WYgfni@'}</msg>
-<status status="PASS" starttime="20230830 09:17:12.786" endtime="20230830 09:17:12.788"/>
+<msg timestamp="20230830 15:32:00.544" level="INFO">${BODY} = {'email': 'larasilva@example.net', 'password': 'Fl^6^PeilA'}</msg>
+<status status="PASS" starttime="20230830 15:32:00.543" endtime="20230830 15:32:00.544"/>
 </kw>
 <kw name="POST On Session" library="RequestsLibrary">
 <var>${RESPONSE}</var>
-<arg>alias=${ALIAS}</arg>
+<arg>alias=serveRest</arg>
 <arg>url=login</arg>
 <arg>json=${BODY}</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20230830 09:17:12.981" level="INFO">POST Request : url=https://serverest.dev/login 
+<msg timestamp="20230830 15:32:00.739" level="INFO">POST Request : url=https://serverest.dev/login 
  path_url=/login 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '62'} 
- body=b'{"email": "ninada-cruz@example.net", "password": "2R3WYgfni@"}' 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '60'} 
+ body=b'{"email": "larasilva@example.net", "password": "Fl^6^PeilA"}' 
  </msg>
-<msg timestamp="20230830 09:17:12.981" level="INFO">POST Response : url=https://serverest.dev/login 
+<msg timestamp="20230830 15:32:00.740" level="INFO">POST Response : url=https://serverest.dev/login 
  status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'c0f8b6d2-3833-46d4-b733-c1999980f2de', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '0bcca545da4341985882e78dfeb6354e', 'Date': 'Wed, 30 Aug 2023 12:17:12 GMT', 'Server': 'Google Frontend', 'Content-Length': '285'} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'b798eb4e-ff9c-4f59-b477-bcffa576a8eb', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '0e750ed506a817bf2bb3cad1d68a4755', 'Date': 'Wed, 30 Aug 2023 18:32:00 GMT', 'Server': 'Google Frontend', 'Content-Length': '283'} 
  body={
     "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlkAQQ7yRXmOle2O3jz_zgNm_xHEcLNcs8"
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhcmFzaWx2YUBleGFtcGxlLm5ldCIsInBhc3N3b3JkIjoiRmxeNl5QZWlsQSIsImlhdCI6MTY5MzQyMDMyMCwiZXhwIjoxNjkzNDIwOTIwfQ.zq5kvdeGqzt4qeWWW24temQqr2XoZjf-QlPTlqUc8fw"
 } 
  </msg>
-<msg timestamp="20230830 09:17:12.981" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230830 09:17:12.789" endtime="20230830 09:17:12.981"/>
+<msg timestamp="20230830 15:32:00.740" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230830 15:32:00.544" endtime="20230830 15:32:00.740"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>Resposta Retornada: ${\n}${RESPONSE.text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230830 09:17:12.982" level="INFO">Resposta Retornada: 
+<msg timestamp="20230830 15:32:00.740" level="INFO">Resposta Retornada: 
 {
     "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlkAQQ7yRXmOle2O3jz_zgNm_xHEcLNcs8"
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhcmFzaWx2YUBleGFtcGxlLm5ldCIsInBhc3N3b3JkIjoiRmxeNl5QZWlsQSIsImlhdCI6MTY5MzQyMDMyMCwiZXhwIjoxNjkzNDIwOTIwfQ.zq5kvdeGqzt4qeWWW24temQqr2XoZjf-QlPTlqUc8fw"
 }</msg>
-<status status="PASS" starttime="20230830 09:17:12.981" endtime="20230830 09:17:12.982"/>
+<status status="PASS" starttime="20230830 15:32:00.740" endtime="20230830 15:32:00.741"/>
 </kw>
 <kw name="Dictionary Should Contain Item" library="Collections">
 <arg>${RESPONSE.json()}</arg>
 <arg>message</arg>
 <arg>Login realizado com sucesso</arg>
 <doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
-<status status="PASS" starttime="20230830 09:17:12.982" endtime="20230830 09:17:12.983"/>
+<status status="PASS" starttime="20230830 15:32:00.741" endtime="20230830 15:32:00.741"/>
 </kw>
 <kw name="Get From Dictionary" library="Collections">
 <var>${TOKEN}</var>
 <arg>${RESPONSE.json()}</arg>
 <arg>authorization</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20230830 09:17:12.984" level="INFO">${TOKEN} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlkAQQ7yRXmOle2O3jz_zg...</msg>
-<status status="PASS" starttime="20230830 09:17:12.983" endtime="20230830 09:17:12.984"/>
+<msg timestamp="20230830 15:32:00.742" level="INFO">${TOKEN} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhcmFzaWx2YUBleGFtcGxlLm5ldCIsInBhc3N3b3JkIjoiRmxeNl5QZWlsQSIsImlhdCI6MTY5MzQyMDMyMCwiZXhwIjoxNjkzNDIwOTIwfQ.zq5kvdeGqzt4qeWWW24temQqr2XoZjf-Q...</msg>
+<status status="PASS" starttime="20230830 15:32:00.741" endtime="20230830 15:32:00.742"/>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <arg>${TOKEN}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20230830 09:17:12.984" level="INFO">${TOKEN} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlkAQQ7yRXmOle2O3jz_zg...</msg>
-<status status="PASS" starttime="20230830 09:17:12.984" endtime="20230830 09:17:12.984"/>
+<msg timestamp="20230830 15:32:00.742" level="INFO">${TOKEN} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhcmFzaWx2YUBleGFtcGxlLm5ldCIsInBhc3N3b3JkIjoiRmxeNl5QZWlsQSIsImlhdCI6MTY5MzQyMDMyMCwiZXhwIjoxNjkzNDIwOTIwfQ.zq5kvdeGqzt4qeWWW24temQqr2XoZjf-Q...</msg>
+<status status="PASS" starttime="20230830 15:32:00.742" endtime="20230830 15:32:00.742"/>
 </kw>
-<status status="PASS" starttime="20230830 09:17:12.786" endtime="20230830 09:17:12.985"/>
+<status status="PASS" starttime="20230830 15:32:00.543" endtime="20230830 15:32:00.742"/>
 </kw>
-<kw name="Cadastrar um produto">
-<kw name="Word" library="FakerLibrary">
-<var>${RANDOM_PROD}</var>
-<doc>Generate a word.</doc>
-<msg timestamp="20230830 09:17:12.985" level="INFO">${RANDOM_PROD} = tempora</msg>
-<status status="PASS" starttime="20230830 09:17:12.985" endtime="20230830 09:17:12.985"/>
-</kw>
-<kw name="Set Suite Variable" library="BuiltIn">
-<arg>${RANDOM_PROD}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20230830 09:17:12.986" level="INFO">${RANDOM_PROD} = tempora</msg>
-<status status="PASS" starttime="20230830 09:17:12.986" endtime="20230830 09:17:12.986"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${BODY}</var>
-<arg>nome=${RANDOM_PROD}</arg>
-<arg>preco=155</arg>
-<arg>descricao=meu produto de teste</arg>
-<arg>quantidade=10</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230830 09:17:12.987" level="INFO">${BODY} = {'nome': 'tempora', 'preco': '155', 'descricao': 'meu produto de teste', 'quantidade': '10'}</msg>
-<status status="PASS" starttime="20230830 09:17:12.986" endtime="20230830 09:17:12.987"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${HEADERS}</var>
-<arg>Authorization=${TOKEN}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230830 09:17:12.988" level="INFO">${HEADERS} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlk...</msg>
-<status status="PASS" starttime="20230830 09:17:12.987" endtime="20230830 09:17:12.988"/>
-</kw>
-<kw name="POST On Session" library="RequestsLibrary">
+<kw name="E realizar a requisição do produto ${_id}" sourcename="E realizar a requisição do produto ${_id}">
+<doc>Realiza uma requisição informando o id do produto no path do endpoint</doc>
+<kw name="GET On Session" library="RequestsLibrary">
 <var>${RESPONSE}</var>
-<arg>alias=${ALIAS}</arg>
-<arg>url=produtos</arg>
-<arg>json=${BODY}</arg>
-<arg>headers=${HEADERS}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20230830 09:17:13.182" level="INFO">POST Request : url=https://serverest.dev/produtos 
- path_url=/produtos 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlkAQQ7yRXmOle2O3jz_zgNm_xHEcLNcs8', 'Content-Length': '92'} 
- body=b'{"nome": "tempora", "preco": "155", "descricao": "meu produto de teste", "quantidade": "10"}' 
+<arg>alias=serveRest</arg>
+<arg>url=/produtos/${_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230830 15:32:00.938" level="INFO">GET Request : url=https://serverest.dev/produtos/K6leHdftCeOJj8BJ 
+ path_url=/produtos/K6leHdftCeOJj8BJ 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
  </msg>
-<msg timestamp="20230830 09:17:13.182" level="INFO">POST Response : url=https://serverest.dev/produtos 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '3f00e6d1-997f-4b1a-b1df-ecbea515f764', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '34be6b111e4ffddafb9ee575fba80ad3', 'Date': 'Wed, 30 Aug 2023 12:17:13 GMT', 'Server': 'Google Frontend', 'Content-Length': '82'} 
+<msg timestamp="20230830 15:32:00.938" level="INFO">GET Response : url=https://serverest.dev/produtos/K6leHdftCeOJj8BJ 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '67cdef7d-cda4-4927-abd3-c4def1de0ac6', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '630868233876123933cea8722f54ce78', 'Date': 'Wed, 30 Aug 2023 18:32:00 GMT', 'Server': 'Google Frontend', 'Content-Length': '136'} 
  body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "B9GKbr0s0Tga44gG"
+    "nome": "Samsung 60 polegadas",
+    "preco": 5240,
+    "descricao": "TV",
+    "quantidade": 49977,
+    "_id": "K6leHdftCeOJj8BJ"
 } 
  </msg>
-<msg timestamp="20230830 09:17:13.182" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20230830 09:17:12.988" endtime="20230830 09:17:13.182"/>
+<msg timestamp="20230830 15:32:00.939" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230830 15:32:00.742" endtime="20230830 15:32:00.939"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>Resposta Retornada: ${\n}${RESPONSE.text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230830 09:17:13.184" level="INFO">Resposta Retornada: 
-{
-    "message": "Cadastro realizado com sucesso",
-    "_id": "B9GKbr0s0Tga44gG"
-}</msg>
-<status status="PASS" starttime="20230830 09:17:13.183" endtime="20230830 09:17:13.184"/>
+<status status="PASS" starttime="20230830 15:32:00.742" endtime="20230830 15:32:00.939"/>
 </kw>
-<kw name="Dictionary Should Contain Item" library="Collections">
-<arg>${RESPONSE.json()}</arg>
-<arg>message</arg>
-<arg>Cadastro realizado com sucesso</arg>
-<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
-<status status="PASS" starttime="20230830 09:17:13.184" endtime="20230830 09:17:13.185"/>
-</kw>
-<kw name="Get From Dictionary" library="Collections">
-<var>${ID_PRODUTO_CADASTRADO}</var>
-<arg>${RESPONSE.json()}</arg>
-<arg>_id</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20230830 09:17:13.187" level="INFO">${ID_PRODUTO_CADASTRADO} = B9GKbr0s0Tga44gG</msg>
-<status status="PASS" starttime="20230830 09:17:13.185" endtime="20230830 09:17:13.187"/>
-</kw>
-<kw name="Set Suite Variable" library="BuiltIn">
-<arg>${ID_PRODUTO_CADASTRADO}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20230830 09:17:13.188" level="INFO">${ID_PRODUTO_CADASTRADO} = B9GKbr0s0Tga44gG</msg>
-<status status="PASS" starttime="20230830 09:17:13.187" endtime="20230830 09:17:13.188"/>
-</kw>
-<status status="PASS" starttime="20230830 09:17:12.985" endtime="20230830 09:17:13.188"/>
-</kw>
-<kw name="Listar o produto cadastrado">
+<kw name="Então o status de resposta deve ser 200">
+<doc>Verifica se o status de resposta é 200</doc>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${HEADERS}</var>
 <arg>Authorization=${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230830 09:17:13.189" level="INFO">${HEADERS} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlk...</msg>
-<status status="PASS" starttime="20230830 09:17:13.189" endtime="20230830 09:17:13.189"/>
+<msg timestamp="20230830 15:32:00.940" level="INFO">${HEADERS} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhcmFzaWx2YUBleGFtcGxlLm5ldCIsInBhc3N3b3JkIjoiRmxeNl5QZWlsQSIsImlhdCI6MTY5MzQyMDMyMCwiZXhwIjoxNjkzNDIwOTIwfQ.zq5kvdeGqzt4qe...</msg>
+<status status="PASS" starttime="20230830 15:32:00.940" endtime="20230830 15:32:00.940"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${RESPONSE}</var>
-<arg>alias=${ALIAS}</arg>
-<arg>url=produtos/${ID_PRODUTO_CADASTRADO}</arg>
+<arg>alias=serveRest</arg>
+<arg>url=produtos/${_id}</arg>
 <arg>headers=${HEADERS}</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230830 09:17:13.386" level="INFO">GET Request : url=https://serverest.dev/produtos/B9GKbr0s0Tga44gG 
- path_url=/produtos/B9GKbr0s0Tga44gG 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbmFkYS1jcnV6QGV4YW1wbGUubmV0IiwicGFzc3dvcmQiOiIyUjNXWWdmbmlAIiwiaWF0IjoxNjkzMzk3ODMyLCJleHAiOjE2OTMzOTg0MzJ9.ilmR5-QnEDlkAQQ7yRXmOle2O3jz_zgNm_xHEcLNcs8'} 
+<msg timestamp="20230830 15:32:01.139" level="INFO">GET Request : url=https://serverest.dev/produtos/K6leHdftCeOJj8BJ 
+ path_url=/produtos/K6leHdftCeOJj8BJ 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhcmFzaWx2YUBleGFtcGxlLm5ldCIsInBhc3N3b3JkIjoiRmxeNl5QZWlsQSIsImlhdCI6MTY5MzQyMDMyMCwiZXhwIjoxNjkzNDIwOTIwfQ.zq5kvdeGqzt4qeWWW24temQqr2XoZjf-QlPTlqUc8fw'} 
  body=None 
  </msg>
-<msg timestamp="20230830 09:17:13.387" level="INFO">GET Response : url=https://serverest.dev/produtos/B9GKbr0s0Tga44gG 
+<msg timestamp="20230830 15:32:01.139" level="INFO">GET Response : url=https://serverest.dev/produtos/K6leHdftCeOJj8BJ 
  status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '71a0a280-beb0-49be-a280-32aeb8d50081', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '71d6a51c33ea0dab7e07b2b82cf57817', 'Date': 'Wed, 30 Aug 2023 12:17:13 GMT', 'Server': 'Google Frontend', 'Content-Length': '137'} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '56db3fd7-2e96-48cb-8f60-11f2c8d67ff6', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'b402dfe9575582ca92683b028b40fdf4', 'Date': 'Wed, 30 Aug 2023 18:32:01 GMT', 'Server': 'Google Frontend', 'Content-Length': '136'} 
  body={
-    "nome": "tempora",
-    "preco": 155,
-    "descricao": "meu produto de teste",
-    "quantidade": 10,
-    "_id": "B9GKbr0s0Tga44gG"
+    "nome": "Samsung 60 polegadas",
+    "preco": 5240,
+    "descricao": "TV",
+    "quantidade": 49977,
+    "_id": "K6leHdftCeOJj8BJ"
 } 
  </msg>
-<msg timestamp="20230830 09:17:13.387" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230830 09:17:13.189" endtime="20230830 09:17:13.387"/>
+<msg timestamp="20230830 15:32:01.140" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230830 15:32:00.940" endtime="20230830 15:32:01.140"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>Resposta Retornada: ${\n}${RESPONSE.text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230830 09:17:13.388" level="INFO">Resposta Retornada: 
+<msg timestamp="20230830 15:32:01.141" level="INFO">Resposta Retornada: 
 {
-    "nome": "tempora",
-    "preco": 155,
-    "descricao": "meu produto de teste",
-    "quantidade": 10,
-    "_id": "B9GKbr0s0Tga44gG"
+    "nome": "Samsung 60 polegadas",
+    "preco": 5240,
+    "descricao": "TV",
+    "quantidade": 49977,
+    "_id": "K6leHdftCeOJj8BJ"
 }</msg>
-<status status="PASS" starttime="20230830 09:17:13.387" endtime="20230830 09:17:13.389"/>
+<status status="PASS" starttime="20230830 15:32:01.140" endtime="20230830 15:32:01.141"/>
 </kw>
-<kw name="Dictionary Should Contain Item" library="Collections">
-<arg>${RESPONSE.json()}</arg>
-<arg>nome</arg>
-<arg>${RANDOM_PROD}</arg>
-<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
-<status status="PASS" starttime="20230830 09:17:13.389" endtime="20230830 09:17:13.390"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>200</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230830 15:32:01.141" endtime="20230830 15:32:01.142"/>
 </kw>
-<kw name="Convert To Integer" library="BuiltIn">
-<var>${preco_integer}</var>
-<arg>155</arg>
-<doc>Converts the given item to an integer number.</doc>
-<msg timestamp="20230830 09:17:13.391" level="INFO">${preco_integer} = 155</msg>
-<status status="PASS" starttime="20230830 09:17:13.390" endtime="20230830 09:17:13.391"/>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20230830 15:32:01.142" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20230830 15:32:01.142" endtime="20230830 15:32:01.143"/>
 </kw>
-<kw name="Dictionary Should Contain Item" library="Collections">
-<arg>${RESPONSE.json()}</arg>
-<arg>preco</arg>
-<arg>${preco_integer}</arg>
-<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
-<status status="PASS" starttime="20230830 09:17:13.391" endtime="20230830 09:17:13.392"/>
+<status status="PASS" starttime="20230830 15:32:00.939" endtime="20230830 15:32:01.143"/>
 </kw>
-<kw name="Dictionary Should Contain Item" library="Collections">
-<arg>${RESPONSE.json()}</arg>
-<arg>descricao</arg>
-<arg>meu produto de teste</arg>
-<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
-<status status="PASS" starttime="20230830 09:17:13.392" endtime="20230830 09:17:13.393"/>
-</kw>
-<kw name="Convert To Integer" library="BuiltIn">
-<var>${quantidade_integer}</var>
-<arg>10</arg>
-<doc>Converts the given item to an integer number.</doc>
-<msg timestamp="20230830 09:17:13.393" level="INFO">${quantidade_integer} = 10</msg>
-<status status="PASS" starttime="20230830 09:17:13.393" endtime="20230830 09:17:13.393"/>
-</kw>
-<kw name="Dictionary Should Contain Item" library="Collections">
-<arg>${RESPONSE.json()}</arg>
-<arg>quantidade</arg>
-<arg>${quantidade_integer}</arg>
-<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
-<status status="PASS" starttime="20230830 09:17:13.393" endtime="20230830 09:17:13.394"/>
-</kw>
-<kw name="Dictionary Should Contain Key" library="Collections">
-<arg>${RESPONSE.json()}</arg>
-<arg>_id</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20230830 09:17:13.394" endtime="20230830 09:17:13.395"/>
-</kw>
-<status status="PASS" starttime="20230830 09:17:13.188" endtime="20230830 09:17:13.395"/>
-</kw>
-<status status="PASS" starttime="20230830 09:17:12.352" endtime="20230830 09:17:13.395"/>
+<status status="PASS" starttime="20230830 15:32:00.101" endtime="20230830 15:32:01.143"/>
 </test>
-<doc>Testes utilizando as novas keywords da RequestsLibrary na versão 8</doc>
-<status status="PASS" starttime="20230830 09:17:11.876" endtime="20230830 09:17:13.396"/>
+<status status="PASS" starttime="20230830 15:31:59.867" endtime="20230830 15:32:01.144"/>
 </suite>
 <statistics>
 <total>
@@ -363,7 +270,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="exemplo API ServeRest">exemplo API ServeRest</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="produtosServeRest">produtosServeRest</stat>
 </suite>
 </statistics>
 <errors>

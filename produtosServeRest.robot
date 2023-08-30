@@ -25,7 +25,15 @@ E realize o cadastro no sistema
     ${Body}    Create Dictionary    nome=${USUARIO.nome}    email=${USUARIO.email}    password=${USUARIO.senha}    administrador=true
     ${RESPONSE}    POST On Session     alias=serveRest    url=usuarios    json=${BODY}
     Log   Resposta Retornada: ${\n}${RESPONSE.text}
-QUANDO o usuário realiza a requisição do produto ${_id}
+
+QUANDO o usuário receber o Obter Token
+    ${BODY}      Create Dictionary   email=${USUARIO.email}   password=${USUARIO.senha}
+    ${RESPONSE}  POST On Session     alias=serveRest    url=login    json=${BODY}
+    Log   Resposta Retornada: ${\n}${RESPONSE.text}
+    Dictionary Should Contain Item    ${RESPONSE.json()}    message    Login realizado com sucesso
+    ${TOKEN}     Get From Dictionary    ${RESPONSE.json()}    authorization
+    Set Suite Variable    ${TOKEN}
+E realizar a requisição do produto ${_id}
     [Documentation]    Realiza uma requisição informando o id do produto no path do endpoint
     ${RESPONSE}    GET On Session    alias=serveRest    url=/produtos/${_id}
 Então o status de resposta deve ser 200
@@ -42,5 +50,6 @@ Então o status de resposta deve ser 200
 Cenário 1: Pesquisar produto por id
     DADO que o usuário inicie a sessão na API do serverest
     E realize o cadastro no sistema
-    QUANDO o usuário realiza a requisição do produto ${_id}
+    QUANDO o usuário receber o Obter Token
+    E realizar a requisição do produto ${_id}
     Então o status de resposta deve ser 200
