@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 6.0 (Python 3.9.12 on linux)" name="Generator">
+<meta content="Robot Framework 6.1 (Python 3.8.2 on linux)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all" type="text/css">
 /* Generic and misc styles */
@@ -560,6 +560,9 @@ function toggleSuite(suiteId) {
 }
 function toggleTest(testId) {
     toggleElement(testId, ['keyword']);
+    var test = window.testdata.findLoaded(testId);
+    if (test.status == "FAIL" || test.status == "SKIP")
+        expandFailed(test);
 }
 function toggleKeyword(kwId) {
     toggleElement(kwId, ['keyword']);
@@ -623,7 +626,7 @@ function loadAndExpandElementIds(ids) {
     }
 }
 function expandFailed(element) {
-    if (element.status == "FAIL") {
+    if (element.status == "FAIL" || (element.type == "test" && element.status == "SKIP")) {
         window.elementsToExpand = [element];
         window.expandDecider = function (e) {
             return e.status == "FAIL";
@@ -1355,7 +1358,7 @@ window.testdata = function () {
     var LEVELS = ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FAIL', 'SKIP'];
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF', 'ELSE IF', 'ELSE', 'RETURN',
-                         'TRY', 'EXCEPT', 'FINALLY', 'WHILE', 'CONTINUE', 'BREAK'];
+                         'TRY', 'EXCEPT', 'FINALLY', 'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -1803,13 +1806,13 @@ function stopPropagation(event) {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[0,0,522],[],[[4,0,0,[],[0,86,435,5],[[0,6,0,0,7,0,0,0,[1,86,1],[[0,8,9,0,10,11,0,0,[1,86,1],[[87,2,12]]]]],[0,13,0,0,14,0,0,0,[1,87,431],[[0,15,9,0,16,17,18,0,[1,88,430],[[517,2,19],[517,2,20],[518,2,21],[518,2,22]]]]],[0,23,0,0,24,0,0,0,[0,518,3],[[0,25,26,0,27,28,29,0,[1,519,0],[[519,2,30]]],[0,31,26,0,32,33,0,0,[0,520,0],[[520,5,5]]],[0,34,9,0,35,0,0,0,[3,521,0],[]]]]]]],[],[1,0,1,0]];
+window.output["suite"] = [1,2,3,0,[],[0,0,756],[],[[4,0,0,[],[0,747,8,5],[[0,6,0,0,7,0,0,0,[0,748,4],[[0,8,9,0,10,11,0,0,[0,749,3],[[750,2,12],[751,5,5]]]]],[0,13,0,0,0,0,0,0,[3,752,0],[]],[0,14,0,0,15,0,0,0,[3,753,0],[]],[0,16,0,0,17,0,0,0,[3,754,0],[]]]]],[],[1,0,1,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*produtosServeRest","*/home/lasic/workspace/robot_tests/produtosServeRest.robot","*../produtosServeRest.robot","*Cenário 1: Pesquisar produto por id","*RESPONSE != 200","*DADO que o endpoint da API está disponivel","*<p>Verifique se a API está disponível\x3c/p>","*Create Session","*RequestsLibrary","*<p>Create Session: create a HTTP session to a server\x3c/p>","*alias=serveRest, url=${BASE_URL}","eNptjDEOwjAQBL9yD7AIdSRXSJQU8IKDLPEJY0e+cxSE+DsJocx2s7uaQwGbpJ4uUJWcqOpCLXEUVq8oI85Qc1RL9MFs0LZpfnWZ612H0VEAdyjq3x9HW7nl/BCsO1cL/pQTHJk8kav9aSh5Wk4rzXq5v/yRo2Jb2uFae7+nL8ZePLU=","*QUANDO o usuário realiza a requisição do produto ${_id}","*<p>Realiza uma requisição informando o id do produto no path do endpoint\x3c/p>","*GET On Session","*<p>Sends a GET request on a previously created HTTP Session.\x3c/p>","*alias=serveRest, url=/produtos/${_id}","*${RESPONSE}","*GET Request : url=https://serverest.dev/produtos/K6leHdftCeOJj8BJ \n path_url=/produtos/K6leHdftCeOJj8BJ \n headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","eNpdks1u2zAQhO9+CsIXA4VZS7Ik/0GH1EndJE0DxEbRW7EiVzJTiauSVOIg6LuXtGMgLY873+4Oydlc7dgD2o60RbZkvWmKvXOdXU4mFs0TGrTuo8SnSWdI9o7s5DZv8Ius3Brvbx7nn27YgFkHrrdFEkVjZhAs6eL+1tf3CBKNLV5HIARaywVpZ6jh0DT0zMmoWunRko0+jMZsdOBSW94ZrNCJ/ZkNMlXVCagMtMipc8r7Dcr24u7q/uF6c/0tANYZJRx3BrS/kXHcouiNci8BbeHAocYizrLMO41WTGnR9BK3fXlJLSg/8eSCnnVDIN/v0UQd6pMejKH2a146/JexWp2dHmy4CjkUQQ9yvGItSSzKhsSvE9QSWlWd/MIR5EoGVsSYxzM542m5KHkaSeDlPI24mM7L2SyLsxKTMOK9ldAHXdcoAWHS5NF/w4qJPRiLruhdxeeh5QdfN9RLvjMgkK/DgIMLvSmIuCoXWVSmaZ5XeQUoZCVkLuIkqkS0oiIOAy7BHXfdkR6zZM4u+polUTJlcbJM8+U0YZu7XQC3x/wEdENUN8g+m6NdGcT1m/OvqGu3P77PNB/98aEpSb4UrwPmz1BTi8MlG26htb2uWR6xjhqsQYIdjk+MD4wgD2VJGr2VJFrhkwChPNx9P5O/e9BOSZ9JX08Xi9nsTfipZCD/T/ZwEPz8BT/a+cU=","eNqtj0FPwzAMhe/8CmscxqUxozCJakziBjfEhjh7iddEpEmJ00L/Pamq/QNuz/b3nvzQxo7RkziNFEjHYKhG707YT9nGUKtHFJe56kl/UcuCQ/LlXGNBA+vsYuhj9Kqfms3t/UMDr0FYD4nf+XtgyZ+UggttAx9h5OTOjg28HI9vB0gLAE7gxAWBjgxDjmBj2a6FUzEUQBke1wqejZkhzSmXFE2ZYQkssjwxx0hOMbR+AjKjEzYKDswN7Ahs4vPTyubcS4OXCioxmWzZRC3KReSAG3W3Vb9Y/BQ0m2qQ0lnZ3PlrEV/9LGVktf+3qB3S/grgMqpZ3PwBkAyRlQ==","*${RESPONSE} = &lt;Response [200]&gt;","*Então o status de resposta deve ser 200","*<p>Verifica se o status de resposta é 200\x3c/p>","*Set Variable","*BuiltIn","*<p>Returns the given values which can then be assigned to a variables.\x3c/p>","*RESPONSE","*${status_code}","*${status_code} = RESPONSE","*Should Be Equal As Strings","*<p>Fails if objects are unequal after converting them to strings.\x3c/p>","*${status_code}, 200","*Delete All Sessions","*<p>Removes all the session objects\x3c/p>"]);
+window.output["strings"] = window.output["strings"].concat(["*","*produtosServeRest","*/home/henrique/workspace/robot_tests/produtosServeRest.robot","*../produtosServeRest.robot","*Cenário 1: Pesquisar produto por id","*ValueError: not enough values to unpack (expected 2, got 1)","*DADO que o usuário inicie a sessão na API do serverest","*<p>Inicia a cessão na API do serverest\x3c/p>","*Create Session","*RequestsLibrary","*<p>Create Session: create a HTTP session to a server\x3c/p>","*alias=serveRest, url=${BASE_URL}, headers=${HEADERS}","eNptjjEOwjAMRa/iAwTKjJSpiJEBuIBpTWsocRQ7FRXi7jTA2L+9b+vp14nQOHRwIlWWAFkLbQEHRvVKaaQjqTnIafC9WdRtVX3rNNfrlkYHPWFLSX1dZAQIO25slmGaoJZgFGx1niJ5jHHgBsutuqkEB0tpRO5M6l9vB5it9wcJ5MD4QZLtTzHJszz9aF7D18nvcVBalrZ0yZ3fwAejsE5M","*E realize o cadastro no sistema","*QUANDO o usuário realiza a requisição do produto ${_id}","*<p>Realiza uma requisição informando o id do produto no path do endpoint\x3c/p>","*Então o status de resposta deve ser 200","*<p>Verifica se o status de resposta é 200\x3c/p>"]);
 </script>
 <script type="text/javascript">
 window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:01","fail":1,"id":"s1","label":"produtosServeRest","name":"produtosServeRest","pass":0,"skip":0}]];
@@ -1818,10 +1821,10 @@ window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","p
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1693226792319;
+window.output["baseMillis"] = 1693343961573;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 528;
+window.output["generated"] = 767;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -1928,8 +1931,8 @@ function makeElementVisible(id) {
         util.map(ids, expandElementWithId);
         if (ids.length) {
             expandFailed(window.testdata.findLoaded(util.last(ids)));
-            window.location.hash = '';
             window.location.hash = id;
+            document.getElementById(id).scrollIntoView();
             highlightLinkTarget();
         }
     });
