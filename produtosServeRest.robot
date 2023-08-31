@@ -26,7 +26,7 @@ E realize o cadastro no sistema
     ${RESPONSE}    POST On Session     alias=serveRest    url=usuarios    json=${BODY}
     Log   Resposta Retornada: ${\n}${RESPONSE.text}
 
-QUANDO o usuário receber o Obter Token
+QUANDO o usuário receber o Token
     ${BODY}      Create Dictionary   email=${USUARIO.email}   password=${USUARIO.senha}
     ${RESPONSE}  POST On Session     alias=serveRest    url=login    json=${BODY}
     Log   Resposta Retornada: ${\n}${RESPONSE.text}
@@ -37,19 +37,36 @@ E realizar a requisição do produto ${_id}
     [Documentation]    Realiza uma requisição informando o id do produto no path do endpoint
     ${RESPONSE}    GET On Session    alias=serveRest    url=/produtos/${_id}
 Então o sistema deve retornar um json com o produto relacionado ao id pesquisado
-    [Documentation]    Verifica se o status de resposta é 200
+    [Documentation]    Verifica se o produto retornado está correto.
     ${HEADERS}   Create Dictionary  Authorization=${TOKEN}
-    ${RESPONSE}  GET On Session     alias=serveRest    url=produtos/${_id}    headers=${HEADERS}
+    ${RESPONSE}  GET On Session     alias=serveRest    url=/produtos/${_id}    headers=${HEADERS}
     Log   Resposta Retornada: ${\n}${RESPONSE.text}
     Dictionary Should Contain Item    ${RESPONSE.json()}    nome    Samsung 60 polegadas
 
     Delete All Sessions
+E realizar a requisição com um id inexistente
+    [Documentation]    Realiza uma requisição informando um id inválido igual a 123
+    ${RESPONSE}    GET On Session    alias=serveRest    url=/produtos/A123
+    [Return]       ${response}
 
+Então o sistema deve retornar um json contendo uma mensagem de erro
+    [Documentation]    Verifica se o status de resposta é 200
+    [Arguments]    ${response}
+    Should Be Equal As Integers    ${response.status_code}    400
+
+    Delete All Sessions
 
 *** Test Cases ***
-Cenário 1: Pesquisar produto por id
+Cenário 1: Pesquisar produto por um id válido
     DADO que o usuário inicie a sessão na API do serverest
     E realize o cadastro no sistema
-    QUANDO o usuário receber o Obter Token
+    QUANDO o usuário receber o Token
     E realizar a requisição do produto ${_id}
     Então o sistema deve retornar um json com o produto relacionado ao id pesquisado
+
+Cenário 2: Pesquisar produto por um id inexistente
+    DADO que o usuário inicie a sessão na API do serverest
+    E realize o cadastro no sistema
+    QUANDO o usuário receber o Token
+    E realizar a requisição com um id inexistente
+    Então o sistema deve retornar um json contendo uma mensagem de erro
